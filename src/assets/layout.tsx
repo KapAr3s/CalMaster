@@ -17,7 +17,7 @@ function Layout() {
     height: '182 cm',
     username: 'Ares',
     email: 'default@gmail.com',
-    password: 'preben the destroyer27',
+    password: 'preben the destroyer2',
   });
 
   const handleFormSubmit = (data: FormData) => {
