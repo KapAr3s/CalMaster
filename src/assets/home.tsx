@@ -7,7 +7,7 @@ function Home () {
   
           {/* Title */}
           <div className='flex justify-center font-bold text-8xl text-slate-200 outline-4 drop-shadow-md underline decoration-black'>
-          <h1>Welcome to CalMaster</h1>
+          <h1>Welcome to FitMaster</h1>
           </div>
   
           {/* Login and Sign-up Buttons */}

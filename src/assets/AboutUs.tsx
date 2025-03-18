@@ -7,7 +7,7 @@ function AboutUs() {
         
                 {/* Titlen */}
                 <div className="flex justify-center font-bold text-8xl text-white outline-4 drop-shadow-md underline decoration-green-700 mb-8">
-                    <h1>CalMaster</h1>
+                    <h1>FitMaster</h1>
                 </div>
 
                 {/* Center content above the bottom box */}

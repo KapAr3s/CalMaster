@@ -8,6 +8,8 @@ import Signup from './assets/signup';
 import AboutUs from './assets/AboutUs';
 import Start from './assets/start';
 import Profile from './assets/profile';
+import Calorie from './assets/calorie';
+import Food from './assets/Food';
 
 const App: React.FC = () => {
   return (
@@ -20,6 +22,8 @@ const App: React.FC = () => {
             <Route path="aboutus" element={<AboutUs />} />
             <Route path="start" element={<Start />} />
             <Route path="profile" element={<Profile />} />
+            <Route path="calorie" element={<Calorie />} />
+            <Route path="food" element={<Food />} />
           </Route>
         </Routes>
     </BrowserRouter>

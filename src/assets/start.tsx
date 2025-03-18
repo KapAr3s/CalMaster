@@ -15,9 +15,9 @@ function Start() {
   return (
     <>
       <div className="relative w-screen h-screen bg-gradient-to-b from-black to-green-700">
-        {/* Title */}
+        {/* Titlen */}
         <div className="flex justify-center font-bold text-8xl text-gray-200 drop-shadow-md underline decoration-green-700">
-          <h1>CalMaster</h1>
+          <h1>FitMaster</h1>
         </div>
 
         {/* Main box */}
@@ -28,15 +28,19 @@ function Start() {
             <h2 className="text-3xl font-bold text-white drop-shadow-md">
               Welcome, {formData.username || "User"}!
             </h2>
-
+            
             <div className="flex w-full justify-between space-x-4">
-             <button className="bg-white border-4 border-black text-lg px-2 py-1 rounded-xl w-full hover:bg-green-500 hover:font-bold hover:text-white">
+              <Link to="/calorie" className="w-[105%]">
+                <button className="bg-white border-4 border-black text-lg px-2 py-1 rounded-xl w-full hover:bg-green-500 hover:font-bold hover:text-white">
                  Calorie intake   
-             </button>
+                </button>
+              </Link>
 
-             <button className="bg-white border-4 border-black text-lg px-2 py-1 rounded-xl w-full hover:bg-green-500 hover:font-bold hover:text-white">
+              <Link to="/food" className="w-[105%]">
+               <button className="bg-white border-4 border-black text-lg px-2 py-1 rounded-xl w-full hover:bg-green-500 hover:font-bold hover:text-white">
                  Food ideas   
-             </button>
+               </button>
+              </Link>
             </div>
 
             <div className="flex w-full justify-between space-x-4">
