@@ -1,25 +1,19 @@
 import { Link } from "react-router-dom";
 import { MouseEvent, useState } from "react";
 import CheckIfUserExistsInDatabase from "./Database";
+import { useNavigate } from "react-router-dom";
 
 const LoginEventHandler = (
   e: MouseEvent<HTMLButtonElement>,
   email: string,
   password: string,
   setUserExists: React.Dispatch<React.SetStateAction<boolean>>,
-  setUserHasTriedToLogin: React.Dispatch<React.SetStateAction<boolean>>
+  setUserHasTriedToLogin: React.Dispatch<React.SetStateAction<boolean>>,
+  navigate: ReturnType<typeof useNavigate>
 ) => {
   e.preventDefault();
-  console.log("Email:", email);
-  console.log("Password:", password);
-  console.log(
-    "User exists in database:",
-    CheckIfUserExistsInDatabase(email, password)
-  );
-
   if (CheckIfUserExistsInDatabase(email, password)) {
-    setUserHasTriedToLogin(true);
-    setUserExists(true);
+    navigate("/start");
   } else {
     setUserHasTriedToLogin(true);
     setUserExists(false);
@@ -31,6 +25,7 @@ function Login() {
   const [password, setPassword] = useState("");
   const [userExists, setUserExists] = useState(false);
   const [userHasTriedToLogin, setUserHasTriedToLogin] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <form>
@@ -38,17 +33,6 @@ function Login() {
         {/* Title */}
         <div className="flex justify-center font-bold text-8xl text-white outline-4 drop-shadow-md underline decoration-green-700">
           <h1>FitMaster</h1>
-        </div>
-
-        {/* Error Message */}
-        <div className="flex justify-center items-center h-screen">
-          {userHasTriedToLogin === true && userExists ? (
-            <div className="flex flex-col items-center gap-4 p-6 border-4 border-black bg-transparent rounded-lg w-80 lg:w-[500px]">
-              <p className="text-white text-2xl">User exists</p>
-            </div>
-          ) : (
-            <> </>
-          )}
         </div>
 
         {/* Login Box */}
@@ -71,6 +55,18 @@ function Login() {
               onChange={(e) => setPassword(e.target.value)}
               className="border border-gray-300 rounded-md h-11 w-full placeholder-black placeholder-italic px-2"
             />
+            {/* Error Message */}
+            <div>
+              {userHasTriedToLogin === true && userExists === false ? (
+                <div>
+                  <p className="text-red-500 text-2xl">
+                    Something wen't wrong. Please try again.
+                  </p>
+                </div>
+              ) : (
+                <p className="text-white text-2xl">Please fill in the form</p>
+              )}
+            </div>
 
             {/* Buttons */}
             <div className="flex w-full justify-between">
@@ -88,7 +84,8 @@ function Login() {
                       email,
                       password,
                       setUserExists,
-                      setUserHasTriedToLogin
+                      setUserHasTriedToLogin,
+                      navigate
                     )
                   }
                   className="bg-white border border-gray-300 px-4 py-2 text-[20px] rounded-md w-full hover:animate-bounce hover:bg-green-500 hover:text-white hover:font-bold"
